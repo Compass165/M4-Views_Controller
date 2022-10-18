@@ -2,12 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/layout :: head"></head>
 <body>
+
 <h3>Products</h3>
+
 <p>
     <a th:href="@{/create}">
         Add new product
     </a>
 </p>
+
+<div class="col-sm-4">
+    <form th:action="@{/search}">
+        <div style="float: left" class="col-sm-6">
+            <input type="text" name="name" placeholder="Enter product name">
+        </div>
+        <div style="float: left" class="col-sm-2">
+            <input type="submit" value="Search">
+        </div>
+    </form>
+</div>
+
+
 <div class="notify">
     <div th:if="${success}">
         <span th:text="${success}"></span>

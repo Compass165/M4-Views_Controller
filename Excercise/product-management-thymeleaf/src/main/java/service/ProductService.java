@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProductService implements IProductService{
+public class ProductService implements IProductService {
     private static final Map<Integer, Product> products;
 
     static {
@@ -19,7 +19,6 @@ public class ProductService implements IProductService{
         products.put(5, new Product(5, "Fanta", 16000, "Nuoc ngot co ga vi cam"));
         products.put(6, new Product(6, "Lavie", 17000, "Nuoc khoang thien nhien"));
     }
-
 
 
     @Override
@@ -48,13 +47,14 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public Product findByName(String name) {
-        int index = -1;
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getName().equals(name)) {
-                index = i;
+    public List<Product> findByName(String name) {
+        List<Product> products1 = new ArrayList<>();
+        List<Product> products2 = findAll();
+        for (int i = 0; i < products2.size(); i++) {
+            if (products2.get(i).getName().equalsIgnoreCase(name)) {
+                products1.add(products2.get(i));
             }
         }
-        return products.get(index);
+        return products1;
     }
 }
